@@ -5,7 +5,13 @@
         <title>Document</title>
     </head>
     <body>
-    <input id="phone" type="tel" pattern="[\+]\d{1}\s[\(]\d{3}[\)]\s\d{3}[\-]\d{2}[\-]\d{2}" minlength="18" maxlength="18" required>
+    <input 
+           id="phone"
+           type="tel"
+           pattern="[\+]\d{1}\s[\(]\d{3}[\)]\s\d{3}[\-]\d{2}[\-]\d{2}"
+           minlength="18"
+           maxlength="18"
+           required>
     <script>
         window.addEventListener("DOMContentLoaded", function() {
             function setCursorPosition(pos, elem) {
@@ -20,7 +26,7 @@
                 }
             }
             function mask(event) {
-                var matrix = "+7 (___) ___-__-__",
+                var matrix = "+7 (___) ___-__-__", // можно редактировать шаблон
                     i = 0,
                     def = matrix.replace(/\D/g, ""),
                     val = this.value.replace(/\D/g, "");
@@ -32,20 +38,11 @@
                     if (this.value.length == 2) this.value = ""
                 } else setCursorPosition(this.value.length, this)
             };
-            let input = document.querySelector("#phone"),
-                input1 = document.querySelector("#phone2"),
-                input2 = document.querySelector("#purchase_phone");
-            input.addEventListener("input", mask, false);
+            let input = document.querySelector("#phone"); // Находим input для работы с маской
+            input.addEventListener("input", mask, false); // Для каждой переменной добавляем три обработчика событий
             input.addEventListener("focus", mask, false);
             input.addEventListener("blur", mask, false);
-            input1.addEventListener("input", mask, false);
-            input1.addEventListener("focus", mask, false);
-            input1.addEventListener("blur", mask, false);
-            input2.addEventListener("input", mask, false);
-            input2.addEventListener("focus", mask, false);
-            input2.addEventListener("blur", mask, false);
         });
-
     </script>
     </body>
 </html>
